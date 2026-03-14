@@ -1,0 +1,10 @@
+1,350,45.50,Polirom,Stanescu,M
+2,420,89.90,Rao,Sorescu,A
+3,280,34.20,Humanitas,Patrascu,B
+4,510,120.00,Litera,Popescu,C
+5,190,28.75,Polirom,Ionescu,D
+6,630,155.30,Rao,Mateescu,E
+7,310,47.80,Humanitas,Stanescu,F
+8,280,39.90,Litera,Gheorghe,G
+9,445,78.60,Rao,Ionescu,H
+10,520,99.99,Humanitas,Popa,I
