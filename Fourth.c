@@ -121,9 +121,40 @@ float calculeazaPretMediu(Nod* lista) {
 	return 0;
 }
 
-void stergeCartiDinSeria(/*lista masini*/ char serieCautata) {
-	//sterge toate masinile din lista care au seria primita ca parametru.
-	//tratati situatia ca masina se afla si pe prima pozitie, si pe ultima pozitie
+void stergeCartiDinSeria(Nod** lista, char serieCautata) {
+	while ((*lista) && (*lista)->info.serie == serieCautata){
+		Nod* aux = *lista;
+		(*lista) = aux->next;
+		if (aux->info.editura) {
+			free(aux->info.editura);
+		}
+		if (aux->info.numeAutor) {
+			free(aux->info.numeAutor);
+		}
+		free(aux);
+	}
+	if ((*lista)) {
+		Nod* p = *lista;
+		while (p) {
+			while (p->next && p->next->info.serie != serieCautata) {
+				p = p->next;
+			}
+			if (p->next) {
+				Nod* aux = p->next;
+				p->next = aux->next;
+				if (aux->info.editura) {
+					free(aux->info.editura);
+				}
+				if (aux->info.numeAutor) {
+					free(aux->info.numeAutor);
+				}
+				free(aux);
+			}
+			else {
+				p = NULL;
+			}
+		}
+	}
 }
 
 float calculeazaPretulCartilorUnuiAutor(Nod* lista, const char* numeAutor) {
@@ -142,8 +173,9 @@ int main() {
 	afisareListaCarti(lista);
 	printf("Pret mediu: %.2f\n", calculeazaPretMediu(lista));
 	printf("Pret mediu per autor: %.2f\n", calculeazaPretulCartilorUnuiAutor(lista,"Stanescu"));
-
-
+	stergeCartiDinSeria(&lista, 'A');
+	printf("\n###################\n\n");
+	afisareListaCarti(lista);
 	dezalocareListaCarte(&lista);
 
 	return 0;
