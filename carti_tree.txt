@@ -1,0 +1,10 @@
+5,190,28.75,Polirom,Ionescu Razvan,D 
+2,420,89.90,Rao,Sorescu Andrei,A 
+10,520,99.99,Humanitas,Popa Marius,I 
+4,510,120.00,Litera,Popescu Alin,A 
+8,280,39.90,Litera,Gheorghe Ion,A 
+3,250,34.20,Humanitas,Patrascu George,B 
+1,350,45.50,Polirom,Stanescu Mihai,M 
+7,310,47.80,Humanitas,Stanescu Mihai,F 
+6,630,155.30,Rao,Mateescu Bogdan,A 
+9,445,78.60,Rao,Ionescu Razvan,H
