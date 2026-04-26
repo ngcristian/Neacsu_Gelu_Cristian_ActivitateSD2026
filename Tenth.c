@@ -16,7 +16,7 @@ typedef struct StructuraComputer Computer;
 
 
 struct Nod {
-	Computer info;
+	Computer infoComp;
 	struct Nod* next;
 };
 
@@ -38,7 +38,7 @@ Computer citireCompFisier(FILE* file) {
 	return compCitit;
 }
 
-void afisareCarte(Computer comp) {
+void afisareComp(Computer comp) {
 	printf("Id: %d\n", comp.id);
 	printf("Ram Memory: %d\n", comp.ramMemory);
 	printf("Pret: %0.2f\n", comp.pret);
@@ -48,14 +48,14 @@ void afisareCarte(Computer comp) {
 
 void afisareListaComputers(Nod* lista) {
 	while (lista) {
-		afisareCarte(lista->info);
+		afisareComp(lista->infoComp);
 		lista = lista->next;
 	}
 }
 
 void adaugaCompInLista(Nod** lista, Computer compNou) {
 	Nod* nou = (Nod*)malloc(sizeof(Nod));
-	nou->info = compNou;
+	nou->infoComp = compNou;
 	nou->next = NULL;
 	if (*lista) {
 		Nod* p = *lista;
@@ -71,7 +71,7 @@ void adaugaCompInLista(Nod** lista, Computer compNou) {
 
 void adaugaLaInceputInLista(Nod** lista, Computer compNou) {
 	Nod* nou = (Nod*)malloc(sizeof(Nod));
-	nou->info = compNou;
+	nou->infoComp = compNou;
 	nou->next = *lista;
 	*lista = nou;
 }
@@ -92,8 +92,8 @@ void dezalocareListaComputer(Nod** lista) {
 	while (*lista) {
 		Nod* p = *lista;
 		(*lista) = (*lista)->next;
-		if (p->info.model) {
-			free(p->info.model);
+		if (p->infoComp.model) {
+			free(p->infoComp.model);
 		}
 		free(p);
 	}
@@ -103,7 +103,7 @@ float calculeazaPretMediu(Nod* lista) {
 	float sum = 0;
 	int count = 0;
 	while (lista) {
-		sum += lista->info.pret;
+		sum += lista->infoComp.pret;
 		count++;
 		lista = lista->next;
 	}
@@ -114,25 +114,25 @@ float calculeazaPretMediu(Nod* lista) {
 }
 
 void stergeComputerDinSeria(Nod** lista, char serieCautata) {
-	while ((*lista) && (*lista)->info.powerClass == serieCautata) {
+	while ((*lista) && (*lista)->infoComp.powerClass == serieCautata) {
 		Nod* aux = *lista;
 		(*lista) = aux->next;
-		if (aux->info.model) {
-			free(aux->info.model);
+		if (aux->infoComp.model) {
+			free(aux->infoComp.model);
 		}
 		free(aux);
 	}
 	if ((*lista)) {
 		Nod* p = *lista;
 		while (p) {
-			while (p->next && p->next->info.powerClass != serieCautata) {
+			while (p->next && p->next->infoComp.powerClass != serieCautata) {
 				p = p->next;
 			}
 			if (p->next) {
 				Nod* aux = p->next;
 				p->next = aux->next;
-				if (aux->info.model) {
-					free(aux->info.model);
+				if (aux->infoComp.model) {
+					free(aux->infoComp.model);
 				}
 				free(aux);
 			}
@@ -146,8 +146,8 @@ void stergeComputerDinSeria(Nod** lista, char serieCautata) {
 float calculeazaPretulCompUnuiModel(Nod* lista, const char* model) {
 	float sum = 0;
 	while (lista) {
-		if (strcmp(lista->info.model, model) == 0) {
-			sum += lista->info.pret;
+		if (strcmp(lista->infoComp.model, model) == 0) {
+			sum += lista->infoComp.pret;
 		}
 		lista = lista->next;
 	}
