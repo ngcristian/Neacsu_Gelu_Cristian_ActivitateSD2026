@@ -1,0 +1,10 @@
+4,2800,45.5,Atlantic,B
+5,9500,210.0,Titan,A
+6,1200,15.2,Nereid,D
+7,4200,85.0,Odysseus,B
+8,7800,165.5,Kraken,A
+9,3100,55.0,Calypso,C
+10,1500,25.8,Voyager,D
+11,5400,110.0,Triton,B
+12,8900,195.0,Leviathan,A
+13,2100,40.5,Discovery,C
